@@ -2,10 +2,19 @@
 // const cocktailUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
 // const ordinaryUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
 // alcohol ingredient type apis
+
+// 
+
 const ginUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin'
 const vodkaUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka'
 const tequilaUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Tequila'
 const rumUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Rum'
+
+//End of Game Links
+
+const tispyUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU9wbKIz2BMneYYqD&q=tipsy&limit=25&offset=0&rating=R&lang=en'
+const drunkAFUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU9wbKIz2BMneYYqD&q=drunk af&limit=25&offset=0&rating=R&lang=en'
+const wastedUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU9wbKIz2BMneYYqD&q=wasted&limit=25&offset=0&rating=R&lang=en'
 
 const cocktailPartyButton = document.querySelector('.beach-party-button')
 const beachPartyButton = document.querySelector('.cocktail-party-button')
@@ -58,6 +67,14 @@ function apiSearch (url) {
     fetch(url)
     .then(response => response.json())
     .then(drinks => console.log(drinks))
+}
+
+function createNode (element) {
+    document.createElement(element)
+}
+
+function appendChild (parent, element) {
+    parent.appendChild(element)
 }
 
 //do api calls based on 'cocktail' or 'ordinary'
