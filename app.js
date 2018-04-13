@@ -18,7 +18,9 @@ const vodkaButton = document.querySelector('.vodka-button')
 const tequilaButton = document.querySelector('.tequila-button')
 const rumButton = document.querySelector('.rum-button')
 const buttonContainer = document.querySelector('.button-container')
-
+//drink
+let drunkStatus = ''
+const drinkButtonArray = document.getElementsByTagName('a')
 
 
 cocktailPartyButton.addEventListener('click', function () {
@@ -67,6 +69,7 @@ function apiSearch (url) {
     fetch(url)
     .then(response => response.json())
     .then(response => buildDrinkCard(response.drinks))
+    // .then(addButtonClickEvent)
 }
 
 
@@ -74,7 +77,7 @@ function buildDrinkCard (drinks) {
   const cardContainer = document.querySelector('.card-container')
     for (let i = 0; i < 12; i++) {
       const drinkCard = document.createElement('div')
-      drinkCard.classList.add('card')
+      drinkCard.classList.add('card', 'card-body')
       drinkCard.style.width = '18rem'
       cardContainer.appendChild(drinkCard)
 
@@ -103,4 +106,15 @@ function buildDrinkCard (drinks) {
       drinkButton.textContent = 'Drink'
       drinkCard.appendChild(drinkButton)
     }
+    console.log(drinkButtonArray)
+}
+
+// function addButtonClickEvent (drinkButtons) {
+//     for (let i = 0; i < drinkButtons.length; i++) {
+//         console.log(drinkButtons[i])
+//     }
+// }
+
+function setDrunkStatus () {
+    console.log('test')
 }
