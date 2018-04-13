@@ -74,7 +74,7 @@ function apiSearch (url) {
 
 function buildDrinkCard (drinks) {
   const cardContainer = document.querySelector('.card-container')
-    for (let i = 0; i < 12; i++) {
+    for (let i = 1; i < 10; i++) {
       const drinkCard = document.createElement('div')
       drinkCard.classList.add('card', 'card-body')
       drinkCard.style.width = '18rem'
@@ -97,24 +97,34 @@ function buildDrinkCard (drinks) {
 
       const inputField = document.createElement('input')
       inputField.classList.add('input-field')
+      inputField.id = i
       drinkCard.appendChild(inputField)
 
       const drinkButton = document.createElement('a')
       drinkButton.classList.add('btn', 'btn-primary', 'drink-button')
       drinkButton.href = '#'
       drinkButton.textContent = 'Drink'
+      drinkButton.id = i
       drinkCard.appendChild(drinkButton)
     }
 }
 
 function addButtonClickEvent () {
     const drinkButtonsArray = document.getElementsByTagName('a')
+    const drinkQuantity = document.getElementsByTagName('input')
     for (let i = 0; i < drinkButtonsArray.length; i++) {
-        drinkButtonsArray[i].addEventListener('click', function () {           
+        drinkButtonsArray[i].addEventListener('click', function () {
+          for (var c = 0; c < drinkQuantity.length; c++) {
+            if(drinkButtonsArray[i].id === drinkQuantity[c].id){
+              if(drinkQuantity[c].value <= 5){
+                drunkStatus = 'tipsy'
+              } else if (drinkQuantity[c].value > 5 && drinkQuantity[c].value <= 10){
+                drunkStatus = 'drunkAF'
+              } else {
+                drunkStatus = 'wasted'
+              }
+            }
+          }
         })
+      }
     }
-}
-
-function setDrunkStatus () {
-    console.log('test')
-}
