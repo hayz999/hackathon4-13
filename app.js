@@ -126,15 +126,12 @@ function updateDrunkStatus (event) {
     if (event.target.previousSibling.value <= 5) {
         drunkStatus = 'tipsy'
         getGiphy(tispyUrl)
-        console.log(drunkStatus)
     } else if (event.target.previousSibling.value > 5 && event.target.previousSibling.value <= 10) {
         drunkStatus = 'drunk AF'
         getGiphy(drunkAFUrl)
-        console.log(drunkStatus)
     } else {
         drunkStatus = 'wasted'
         getGiphy(wastedUrl)
-        console.log(drunkStatus)
     }
     return drunkStatus
 }
@@ -142,7 +139,6 @@ function updateDrunkStatus (event) {
 function getGiphy (url) {
     fetch(url)
     .then(response => response.json())
-    // .then(response => console.log(response))
     .then(createGiph)
 }
 
