@@ -29,6 +29,12 @@ font-family: 'Shrikhand', cursive;
     border-width: 3px;
     border-color: red;
 }
+.card-container {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .card-body {
   display: flex;
   flex-direction: column;
