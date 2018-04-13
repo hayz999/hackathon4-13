@@ -23,13 +23,23 @@ font-family: 'Shrikhand', cursive;
     align-items: center;
 }
 .selected {
-  border-style: solid;
-  border-width: 3px;
-  border-color: red;
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
 }
 .card-body {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
+}
 
+.input-field {
+    width: 60px;
+}
+
+.drink-button {
+    width: 90px;
+    margin-top: 10px;
 }
