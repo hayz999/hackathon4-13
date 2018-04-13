@@ -16,14 +16,16 @@ const tispyUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU
 const drunkAFUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU9wbKIz2BMneYYqD&q=drunk af&limit=25&offset=0&rating=R&lang=en'
 const wastedUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eqCVsQwt3p8gIz1RU9wbKIz2BMneYYqD&q=wasted&limit=25&offset=0&rating=R&lang=en'
 
-const cocktailPartyButton = document.querySelector('.beach-party-button')
-const beachPartyButton = document.querySelector('.cocktail-party-button')
+const cocktailPartyButton = document.querySelector('.cocktail-party-button')
+const beachPartyButton = document.querySelector('.beach-party-button')
 //cocktail party
 const ginButton = document.querySelector('.gin-button')
 const vodkaButton = document.querySelector('.vodka-button')
 //beach party
 const tequilaButton = document.querySelector('.tequila-button')
 const rumButton = document.querySelector('.rum-button')
+
+const cardContainer = document.querySelector('.card-container')
 
 cocktailPartyButton.addEventListener('click', function () {
     beachPartyButton.classList.add('hidden')
@@ -48,7 +50,7 @@ ginButton.addEventListener('click', function () {
 vodkaButton.addEventListener('click', function () {
   apiSearch(vodkaUrl)
   ginButton.classList.add('hidden')
-  vodkaButton.classList.add('hidden')
+  vodkaButton.classList.add('hidden') 
 })
 
 tequilaButton.addEventListener('click', function () {
@@ -67,14 +69,32 @@ function apiSearch (url) {
     fetch(url)
     .then(response => response.json())
     .then(drinks => console.log(drinks))
+    .then(buildDrinkCard)
 }
 
 function createNode (element) {
     document.createElement(element)
 }
 
-function appendChild (parent, element) {
+function appendNode (parent, element) {
     parent.appendChild(element)
+}
+
+function buildDrinkCard (drinks) {
+    for (let i = 0; i <= 10; i++) {
+    const drinkCard = createNode('div')
+    appendNode(cardContainer, drinkCard)
+    drinkCard.classList.add('card')
+    drinkCard.style.width = '18rem'
+    const drinkImg = createNode('img')
+    drinkImg.src = drinks[i].strDrinkThumb
+    drinkImg.classList.add('card-img-top')
+    appendNode(drinkCard, drinkImg)
+    const drinkName = createNode('h5')
+    drinkName.textContent = drinks[i].strDrink
+    drinkName.classList.add('card-title')
+    appendNode(drinkCard, drinkName)
+    }
 }
 
 //do api calls based on 'cocktail' or 'ordinary'
