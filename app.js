@@ -24,6 +24,7 @@ const vodkaButton = document.querySelector('.vodka-button')
 //beach party
 const tequilaButton = document.querySelector('.tequila-button')
 const rumButton = document.querySelector('.rum-button')
+const buttonContainer = document.querySelector('.button-container')
 
 
 
@@ -43,24 +44,28 @@ beachPartyButton.addEventListener('click', function () {
 
 ginButton.addEventListener('click', function () {
   apiSearch(ginUrl)
+  buttonContainer.classList.remove('button-container')
   ginButton.classList.add('hidden')
   vodkaButton.classList.add('hidden')
 })
 
 vodkaButton.addEventListener('click', function () {
   apiSearch(vodkaUrl)
+  buttonContainer.classList.remove('button-container')
   ginButton.classList.add('hidden')
   vodkaButton.classList.add('hidden')
 })
 
 tequilaButton.addEventListener('click', function () {
   apiSearch(tequilaUrl)
+  buttonContainer.classList.remove('button-container')
   tequilaButton.classList.add('hidden')
   rumButton.classList.add('hidden')
 })
 
 rumButton.addEventListener('click', function () {
   apiSearch(rumUrl)
+  buttonContainer.classList.remove('button-container')
   tequilaButton.classList.add('hidden')
   rumButton.classList.add('hidden')
 })
@@ -75,26 +80,19 @@ function apiSearch (url) {
 
 function buildDrinkCard (drinks) {
   const cardContainer = document.querySelector('.card-container')
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i < 10; i++) {
       const drinkCard = document.createElement('div')
-      console.log(drinkCard);
       drinkCard.classList.add('card')
       drinkCard.style.width = '18rem'
       cardContainer.appendChild(drinkCard)
-      console.log(drinks[i].strDrinkThumb);
-
       const drinkImg = document.createElement('img')
       drinkCard.appendChild(drinkImg)
       drinkImg.src = drinks[i].strDrinkThumb
-      drinkImg.classList.add('card-img-top')
-
-      
+      drinkImg.classList.add('card-img-top')  
       const drinkName = document.createElement('h5')
       drinkName.textContent = drinks[i].strDrink
       drinkName.classList.add('card-title')
       drinkCard.appendChild(drinkName)
-
-
     }
 }
 
