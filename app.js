@@ -1,13 +1,23 @@
 //access buttons, add click handlers
 const cocktailUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
+const ordinaryUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
 const cocktailPartyButton = document.querySelector('.beach-party-button')
 const beachPartyButton = document.querySelector('.cocktail-party-button')
 
-cocktailPartyButton.addEventListener('click', function (event) {
-    fetch(cocktailUrl)
+cocktailPartyButton.addEventListener('click', function () {
+    apiSearch(cocktailUrl)
+    console.log('click')
+})
+beachPartyButton.addEventListener('click', function () {
+    apiSearch(ordinaryUrl)
+    console.log('click')
+})
+
+function apiSearch (url) {
+    fetch(url)
     .then(response => response.json())
     .then(drinks => console.log(drinks))
-})
+}
 
 //do api calls based on 'cocktail' or 'ordinary'
 
