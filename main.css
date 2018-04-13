@@ -76,9 +76,11 @@ padding: 20px;
   font-size: 50px;
   font-family: 'Shrikhand', cursive;
 }
-.giph-container{
+.giph-container div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .giph-img{
