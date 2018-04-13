@@ -142,21 +142,22 @@ function updateDrunkStatus (event) {
 function getGiphy (url) {
     fetch(url)
     .then(response => response.json())
-    // .then(response => console.log(response))
     .then(createGiph)
 }
 
 function createGiph (response) {
     console.log(response.data)
-    const body = document.getElementsByTagName('body')[0]
+    const body = document.querySelector('.giph-container')
     const randomIndex = Math.floor(Math.random() * 26)
     console.log(randomIndex)
     const giphContainer = document.createElement('div')
     body.appendChild(giphContainer)
     const giph = document.createElement('img')
     giph.src = response.data[randomIndex].images.downsized_large.url
+    giph.classList.add('giph-img')
     giphContainer.appendChild(giph)
     const heading = document.createElement('h1')
     heading.textContent = `You're ${drunkStatus}...`
+    heading.classList.add('giph-heading')
     giphContainer.appendChild(heading)
 }

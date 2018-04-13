@@ -68,9 +68,20 @@ padding: 20px;
    url(beach-calm.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
 }
 .btn-lg {
   color: Lightcoral;
   font-size: 50px;
   font-family: 'Shrikhand', cursive
+}
+.giph-container{
+
+}
+.giph-img{
+
+}
+.giph-heading {
+  
 }
