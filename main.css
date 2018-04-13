@@ -1,6 +1,5 @@
 body, html {
     height: auto;
-    background-color: blue;
 }
 
 .hidden {
@@ -14,6 +13,9 @@ display: none;
 
 .title {
 font-family: 'Shrikhand', cursive;
+color: Lightcoral;
+font-size: 72px;
+padding: 20px;
 }
 
 .button-container {
@@ -55,7 +57,20 @@ font-family: 'Shrikhand', cursive;
     margin-top: 10px;
 }
 .background-img{
-  background-image: url('beach-calm.jpg');
+  /* background-image: url('beach-calm.jpg'); */
+  background:
+   /* top, transparent red, faked with gradient */
+   linear-gradient(
+     rgba(200, 0, 0, 0.20),
+     rgba(200, 0, 0, 0.20)
+   ),
+   /* bottom, image */
+   url(beach-calm.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+.btn-lg {
+  color: Lightcoral;
+  font-size: 50px;
+  font-family: 'Shrikhand', cursive
 }
