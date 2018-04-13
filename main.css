@@ -77,12 +77,13 @@ padding: 20px;
   font-family: 'Shrikhand', cursive;
 }
 .giph-container{
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
 }
+
 .giph-img{
 max-width: 500px;
-max-height: 500px;
+max-height: auto;
 }
 .giph-heading {
     font-family: 'Shrikhand', cursive;

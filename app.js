@@ -145,7 +145,7 @@ function getGiphy (url) {
 function createGiph (response) {
     console.log(response.data)
     const body = document.querySelector('.giph-container')
-    const randomIndex = Math.floor(Math.random() * 26)
+    const randomIndex = Math.floor(Math.random() * 25)
     console.log(randomIndex)
     const giphContainer = document.createElement('div')
     body.appendChild(giphContainer)
