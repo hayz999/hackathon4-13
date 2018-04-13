@@ -30,6 +30,7 @@ font-family: 'Shrikhand', cursive;
     border-color: red;
 }
 .card-container {
+  height: auto;
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
