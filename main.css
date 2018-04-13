@@ -1,5 +1,5 @@
 body, html {
-    height: 100vh;
+    height: auto;
     background-color: blue;
 }
 
@@ -52,4 +52,9 @@ font-family: 'Shrikhand', cursive;
 .drink-button {
     width: 90px;
     margin-top: 10px;
+}
+.background-img{
+  background-image: url('beach-calm.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
