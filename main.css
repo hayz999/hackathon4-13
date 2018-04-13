@@ -16,6 +16,7 @@ font-family: 'Shrikhand', cursive;
 color: Lightcoral;
 font-size: 72px;
 padding: 20px;
+text-shadow: #333 .15vw .15vw .15vw;
 }
 
 .button-container {
@@ -73,6 +74,7 @@ padding: 20px;
 }
 .btn-lg {
   color: Lightcoral;
+  text-shadow: #333 .15vw .15vw .15vw;
   font-size: 50px;
   font-family: 'Shrikhand', cursive;
 }
@@ -92,5 +94,6 @@ max-height: auto;
     font-size: 60px;
     text-align: center;
     color: lightcoral;
+    text-shadow: #333 .15vw .15vw .15vw;
     padding: 17px;
 }
