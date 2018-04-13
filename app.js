@@ -3,7 +3,7 @@
 // const ordinaryUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
 // alcohol ingredient type apis
 
-// 
+//
 
 const ginUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin'
 const vodkaUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka'
@@ -25,7 +25,7 @@ const vodkaButton = document.querySelector('.vodka-button')
 const tequilaButton = document.querySelector('.tequila-button')
 const rumButton = document.querySelector('.rum-button')
 
-const cardContainer = document.querySelector('.card-container')
+
 
 cocktailPartyButton.addEventListener('click', function () {
     beachPartyButton.classList.add('hidden')
@@ -50,7 +50,7 @@ ginButton.addEventListener('click', function () {
 vodkaButton.addEventListener('click', function () {
   apiSearch(vodkaUrl)
   ginButton.classList.add('hidden')
-  vodkaButton.classList.add('hidden') 
+  vodkaButton.classList.add('hidden')
 })
 
 tequilaButton.addEventListener('click', function () {
@@ -68,32 +68,33 @@ rumButton.addEventListener('click', function () {
 function apiSearch (url) {
     fetch(url)
     .then(response => response.json())
-    .then(drinks => console.log(drinks))
-    .then(buildDrinkCard)
+    // .then(drinks => console.log(drinks))
+    .then(response => buildDrinkCard(response.drinks))
 }
 
-function createNode (element) {
-    document.createElement(element)
-}
-
-function appendNode (parent, element) {
-    parent.appendChild(element)
-}
 
 function buildDrinkCard (drinks) {
-    for (let i = 0; i <= 10; i++) {
-    const drinkCard = createNode('div')
-    appendNode(cardContainer, drinkCard)
-    drinkCard.classList.add('card')
-    drinkCard.style.width = '18rem'
-    const drinkImg = createNode('img')
-    drinkImg.src = drinks[i].strDrinkThumb
-    drinkImg.classList.add('card-img-top')
-    appendNode(drinkCard, drinkImg)
-    const drinkName = createNode('h5')
-    drinkName.textContent = drinks[i].strDrink
-    drinkName.classList.add('card-title')
-    appendNode(drinkCard, drinkName)
+  const cardContainer = document.querySelector('.card-container')
+    for (let i = 0; i < 10; i++) {
+      const drinkCard = document.createElement('div')
+      console.log(drinkCard);
+      drinkCard.classList.add('card')
+      drinkCard.style.width = '18rem'
+      cardContainer.appendChild(drinkCard)
+      console.log(drinks[i].strDrinkThumb);
+
+      const drinkImg = document.createElement('img')
+      drinkCard.appendChild(drinkImg)
+      drinkImg.src = drinks[i].strDrinkThumb
+      drinkImg.classList.add('card-img-top')
+
+      
+      const drinkName = document.createElement('h5')
+      drinkName.textContent = drinks[i].strDrink
+      drinkName.classList.add('card-title')
+      drinkCard.appendChild(drinkName)
+
+
     }
 }
 
