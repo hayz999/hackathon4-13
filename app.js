@@ -72,18 +72,35 @@ function apiSearch (url) {
 
 function buildDrinkCard (drinks) {
   const cardContainer = document.querySelector('.card-container')
-    for (let i = 1; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
       const drinkCard = document.createElement('div')
       drinkCard.classList.add('card')
       drinkCard.style.width = '18rem'
       cardContainer.appendChild(drinkCard)
+
       const drinkImg = document.createElement('img')
       drinkCard.appendChild(drinkImg)
       drinkImg.src = drinks[i].strDrinkThumb
       drinkImg.classList.add('card-img-top')
+
       const drinkName = document.createElement('h5')
       drinkName.textContent = drinks[i].strDrink
       drinkName.classList.add('card-title')
       drinkCard.appendChild(drinkName)
+
+      const quantity = document.createElement('h6')
+      quantity.textContent = 'Qty.'
+      quantity.classList.add('card-title')
+      drinkCard.appendChild(quantity)
+
+      const inputField = document.createElement('input')
+      inputField.classList.add('input-field')
+      drinkCard.appendChild(inputField)
+
+      const drinkButton = document.createElement('a')
+      drinkButton.classList.add('btn', 'btn-primary', 'drink-button')
+      drinkButton.href = '#'
+      drinkButton.textContent = 'Drink'
+      drinkCard.appendChild(drinkButton)
     }
 }
