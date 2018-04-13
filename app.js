@@ -17,8 +17,9 @@ const vodkaButton = document.querySelector('.vodka-button')
 //beach party
 const tequilaButton = document.querySelector('.tequila-button')
 const rumButton = document.querySelector('.rum-button')
-const buttonContainer = document.querySelector('.button-container')
 //drink
+const buttonContainer = document.querySelector('.button-container')
+const cardContainer = document.querySelector('.card-container')
 let drunkStatus = ''
 let drinkQty = 0
 
@@ -74,7 +75,6 @@ function apiSearch (url) {
 
 
 function buildDrinkCard (drinks) {
-  const cardContainer = document.querySelector('.card-container')
     for (let i = 1; i < 9; i++) {
       const drinkCard = document.createElement('div')
       drinkCard.classList.add('card', 'card-body')
@@ -110,22 +110,53 @@ function buildDrinkCard (drinks) {
     }
 }
 
-function addButtonClickEvent () {
+function addButtonClickEvent (event) {
     const drinkButtonsArray = document.getElementsByTagName('a')
     const drinkQuantity = document.getElementsByTagName('input')
     for (let i = 0; i < drinkButtonsArray.length; i++) {
-        drinkButtonsArray[i].addEventListener('click', function () {
-          for (var c = 0; c < drinkQuantity.length; c++) {
-            if(drinkButtonsArray[i].id === drinkQuantity[c].id){
-                drinkQty += drinkQuantity[c].value
-            }
-          }
-          return drinkQty
-          console.log(drinkQty)
+        drinkButtonsArray[i].addEventListener('click', function (event) {
+            updateDrunkStatus(event)
+            cardContainer.classList.remove('card-container')
+            cardContainer.classList.add('hidden', 'background-img')
         })
     }
 }
 
-function updateDrinkQuantity () {
-    console.log(drinkQty)
+function updateDrunkStatus (event) {
+    if (event.target.previousSibling.value <= 5) {
+        drunkStatus = 'tipsy'
+        getGiphy(tispyUrl)
+        console.log(drunkStatus)
+    } else if (event.target.previousSibling.value > 5 && event.target.previousSibling.value <= 10) {
+        drunkStatus = 'drunk AF'
+        getGiphy(drunkAFUrl)
+        console.log(drunkStatus)
+    } else {
+        drunkStatus = 'wasted'
+        getGiphy(wastedUrl)
+        console.log(drunkStatus)
+    }
+    return drunkStatus
+}
+
+function getGiphy (url) {
+    fetch(url)
+    .then(response => response.json())
+    // .then(response => console.log(response))
+    .then(createGiph)
+}
+
+function createGiph (response) {
+    console.log(response.data)
+    const body = document.getElementsByTagName('body')[0]
+    const randomIndex = Math.floor(Math.random() * 26)
+    console.log(randomIndex)
+    const giphContainer = document.createElement('div')
+    body.appendChild(giphContainer)
+    const giph = document.createElement('img')
+    giph.src = response.data[randomIndex].images.downsized_large.url
+    giphContainer.appendChild(giph)
+    const heading = document.createElement('h1')
+    heading.textContent = `You're ${drunkStatus}...`
+    giphContainer.appendChild(heading)
 }
