@@ -1,10 +1,3 @@
-//access buttons, add click handler
-// const cocktailUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
-// const ordinaryUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
-// alcohol ingredient type apis
-
-//
-
 const ginUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin'
 const vodkaUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka'
 const tequilaUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Tequila'
@@ -73,7 +66,6 @@ rumButton.addEventListener('click', function () {
 function apiSearch (url) {
     fetch(url)
     .then(response => response.json())
-    // .then(drinks => console.log(drinks))
     .then(response => buildDrinkCard(response.drinks))
 }
 
@@ -88,23 +80,10 @@ function buildDrinkCard (drinks) {
       const drinkImg = document.createElement('img')
       drinkCard.appendChild(drinkImg)
       drinkImg.src = drinks[i].strDrinkThumb
-      drinkImg.classList.add('card-img-top')  
+      drinkImg.classList.add('card-img-top')
       const drinkName = document.createElement('h5')
       drinkName.textContent = drinks[i].strDrink
       drinkName.classList.add('card-title')
       drinkCard.appendChild(drinkName)
     }
 }
-
-//do api calls based on 'cocktail' or 'ordinary'
-
-//access alcohol buttons, add click handlers
-
-//perform api search based on ingredient
-
-//render random drinks on screen
-
-//simple logic based on how many of selected drinks
-
-//'it's now five o clock the next day, you just woke up in a ditch'
-//'you had too many, you yelled at your mom last night'
