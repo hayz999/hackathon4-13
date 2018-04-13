@@ -20,6 +20,7 @@ const rumButton = document.querySelector('.rum-button')
 const buttonContainer = document.querySelector('.button-container')
 //drink
 let drunkStatus = ''
+let drinkQty = 0
 
 
 cocktailPartyButton.addEventListener('click', function () {
@@ -74,7 +75,7 @@ function apiSearch (url) {
 
 function buildDrinkCard (drinks) {
   const cardContainer = document.querySelector('.card-container')
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 9; i++) {
       const drinkCard = document.createElement('div')
       drinkCard.classList.add('card', 'card-body')
       drinkCard.style.width = '18rem'
@@ -116,15 +117,15 @@ function addButtonClickEvent () {
         drinkButtonsArray[i].addEventListener('click', function () {
           for (var c = 0; c < drinkQuantity.length; c++) {
             if(drinkButtonsArray[i].id === drinkQuantity[c].id){
-              if(drinkQuantity[c].value <= 5){
-                drunkStatus = 'tipsy'
-              } else if (drinkQuantity[c].value > 5 && drinkQuantity[c].value <= 10){
-                drunkStatus = 'drunkAF'
-              } else {
-                drunkStatus = 'wasted'
-              }
+                drinkQty += drinkQuantity[c].value
             }
           }
+          return drinkQty
+          console.log(drinkQty)
         })
-      }
     }
+}
+
+function updateDrinkQuantity () {
+    console.log(drinkQty)
+}
