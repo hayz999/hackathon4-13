@@ -22,3 +22,14 @@ font-family: 'Shrikhand', cursive;
     justify-content: space-evenly;
     align-items: center;
 }
+.selected {
+  border-style: solid;
+  border-width: 3px;
+  border-color: red;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+}
